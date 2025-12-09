@@ -1,0 +1,44 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Playwright artifacts
+test-results/
+playwright-report/
+blob-report/
+playwright/.auth/
+playwright/.cache/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Env / secrets
+.env
+.env.
+*.local
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+.history/
+*.code-workspace
+*.iml
+
+# Misc
+dist/
+tmp/
+x_*
+*copy*
+.github
+
+# Logs
+logs/
+*.log
