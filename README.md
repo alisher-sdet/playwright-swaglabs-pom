@@ -1,70 +1,48 @@
-# Playwright SwagLabs POM
+# Playwright SauceDemo: Page Object Model
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 ![Playwright](https://img.shields.io/badge/Playwright-1.x-2D4DFF?logo=playwright)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ESM-yellow?logo=javascript)
-![Platform](https://img.shields.io/badge/Platform-Web-green)
 
-Учебный, но инженерно оформленный тестовый фреймворк на **Playwright + Page Object Model**  
-для приложения **SauceDemo (SwagLabs)**. Проект служит фундаментом для AI-генерации тестов  
-(Mini-Project C) и демонстрирует подход уровня Senior / Automation Architect.
+## Описание
 
-## 🔧 Стек
+Тесты на Playwright с паттерном Page Object для демо-приложения [SauceDemo](https://www.saucedemo.com).
 
-- **Playwright 1.x** (Chromium / Firefox / WebKit)
-- **Page Object Model (POM)**
-- Выделенные карты локаторов: `src/locators`
-- Универсальные helpers:
-  - `src/utils/actions.js` (stable click, fill, blur)
-  - `src/utils/asserts.js` (expect wrappers)
-- Структурированные тесты: `src/tests`
-- Глобальный фильтр сетевых запросов (`fixtures.js`)
+**Покрытие:** вход в систему, страница каталога (inventory), боковое меню. [Тестов: N.]
 
-## 📁 Структура
+## Стек
+
+- Playwright 1.x (Chromium / Firefox / WebKit)
+- JavaScript (ESM), Node.js
+- Page Object Model, карты локаторов, вспомогательные функции для действий и проверок
+
+## Структура
 
 - `src/pages` — Page Objects (Login, Home, Inventory)
-- `src/locators` — декларативные карты локаторов
-- `src/data` — данные для тестов
-- `src/utils` — actions/asserts helpers
-- `src/tests` — login + inventory + меню
-- `src/tests/helpers` — helpers для тестов
-- `fixtures.js` — beforeEach, очистка контекста, сетевые фильтры
-- `playwright.config.js` — конфиг, репортеры, baseURL
-- `package.json` — сборка, линтер, тесты
-- `README.md` — описание
+- `src/locators` — карты локаторов
+- `src/data` — тестовые данные
+- `src/utils` — `actions.js` (клик, ввод, потеря фокуса), `asserts.js` (обёртки над `expect`)
+- `src/tests` — тесты (вход, каталог, меню) и `src/tests/helpers`
+- `fixtures.js` — [укажите путь] перед каждым тестом: очистка контекста, фильтрация сетевых запросов (аналитика, трекинг)
+- `playwright.config.js` — настройки запуска и `baseURL`
 
-## 🚀 Запуск
+## Запуск
 
 ```bash
 npm install
-npm test            # все тесты
-npm run test:ui     # UI-режим Playwright
-npm run test:headed # Headless режим Playwright
-npm run test:debug  # debug режим Playwright
+npx playwright install   # браузеры, при первом запуске
+npm test                 # все тесты
+npm run test:ui          # интерактивный режим Playwright
+npm run test:headed      # с видимым окном браузера
+npm run test:debug       # отладка
 ```
 
-## 🧩 Что демонстрирует фреймворк
+## Что в проекте реализовано
 
-- Чистая архитектура POM + helpers + локаторы
-- Стабильная работа бургер-меню:
-  - ожидание aria-hidden
-  - transform → открыто/закрыто
-  - fallback-селекторы (getMenuWrapSelector)
-- Контролируемая навигация:
-  - переход в новой вкладке
-  - переход в той же вкладке
-  - goBack() после внешних страниц
-- Подготовка к AI-слою генерации тестов:
-  - стандартизованные actions/asserts
-  - формализованные страницы
-  - чистые и короткие тесты
+- **Бургер-меню:** ожидание состояния меню (`aria-hidden`, анимация), запасные селекторы.
+- **Навигация:** переход по внешним ссылкам в новой и в той же вкладке, возврат назад.
+- **Сетевые запросы:** блокировка лишних запросов (аналитика, трекинг), чтобы тесты не зависели от сторонних сервисов.
 
-## 📜 Лицензия
+## Лицензия
 
-MIT — see [LICENSE](./LICENSE)
-
-## ⭐ Автор
-
-Alisher — SDET / Automation Engineer
-Web · Mobile · AI-driven Testing
-https://github.com/alisher-sdet
+MIT, см. [LICENSE](./LICENSE).
