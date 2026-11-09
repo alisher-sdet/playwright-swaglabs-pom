@@ -1,17 +1,16 @@
 {
-	"name": "ui_wa_pw",
+	"name": "playwright-swaglabs-pom",
 	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
+	"description": "Playwright + Page Object Model tests for SauceDemo (learning project)",
 	"scripts": {
 		"test": "playwright test",
 		"test:ui": "playwright test --ui",
 		"test:headed": "playwright test --headed",
-		"test:debug": "PWDEBUG=1 playwright test"
+		"test:debug": "playwright test --debug"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"type": "module",
 	"devDependencies": {
 		"@playwright/test": "^1.57.0",
